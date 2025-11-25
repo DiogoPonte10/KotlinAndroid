@@ -10,13 +10,13 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textSize="16sp"
-        android:text="Calcule quanto tempo falta para sua aposentadoria !"
+        android:text="@string/calcular_aposentadoria"
         android:layout_marginBottom="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Escolha o sexo:" />
+        android:text="@string/escolha_sexo" />
     <Spinner
         android:id="@+id/spn_sexo"
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Digite sua idade:" />
+        android:text="@string/digite_idade" />
     <EditText
         android:id="@+id/txt_idade"
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
         android:id="@+id/btn_calcular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calcular" />
+        android:text="@string/calcular" />
 
     <TextView
         android:id="@+id/txt_resultado"

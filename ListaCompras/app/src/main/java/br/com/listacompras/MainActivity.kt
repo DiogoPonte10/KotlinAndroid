@@ -1,6 +1,8 @@
 package br.com.listacompras
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -31,8 +33,25 @@ class MainActivity: AppCompatActivity() {
             // Atribui a variavel
             val produto = txtProduto.text.toString()
 
-            // Adiciona no Adapter
-            produtosAdapter.add(produto)
+            // Verifica se preenchido e Adiciona no Adapter
+            if (produto.isNotEmpty()) {
+                produtosAdapter.add(produto)
+                // Limpa o campo
+                txtProduto.text.clear()
+            } else {
+                txtProduto.error = "Preencha o produto"
+            }
+        }
+
+        // Define o Listener para a ListView
+        listViewProdutos.setOnItemLongClickListener {
+            adapterView: AdapterView<*>, view: View, position: Int, id: Long ->
+            // Atribui a variável
+            val item = produtosAdapter.getItem(position)
+            // Remove o item
+            produtosAdapter.remove(item)
+            // Retorno do Click
+            true
         }
     }
 }
