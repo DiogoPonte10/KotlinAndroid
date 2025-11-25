@@ -1,5 +1,6 @@
 package br.com.listacompras
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -18,8 +19,9 @@ class MainActivity: AppCompatActivity() {
 
         // Atribui a variável
         val listViewProdutos = findViewById<ListView>(R.id.list_view_produtos)
-        val btnInserir = findViewById<Button>(R.id.btn_inserir)
-        val txtProduto = findViewById<EditText>(R.id.txt_produto)
+        val btnAdicionar = findViewById<Button>(R.id.btn_adicionar)
+//        val btnInserir = findViewById<Button>(R.id.btn_inserir)
+//        val txtProduto = findViewById<EditText>(R.id.txt_produto)
 
         // Declara o Adapter
         val produtosAdapter = ArrayAdapter<String>(this,
@@ -29,19 +31,27 @@ class MainActivity: AppCompatActivity() {
         listViewProdutos.adapter = produtosAdapter
 
         // Define o Listener do Button
-        btnInserir.setOnClickListener {
-            // Atribui a variavel
-            val produto = txtProduto.text.toString()
-
-            // Verifica se preenchido e Adiciona no Adapter
-            if (produto.isNotEmpty()) {
-                produtosAdapter.add(produto)
-                // Limpa o campo
-                txtProduto.text.clear()
-            } else {
-                txtProduto.error = "Preencha o produto"
-            }
+        btnAdicionar.setOnClickListener {
+            // Declara o Intent
+            val intent = Intent(this,CadastroActivity::class.java)
+            // Inicia a Activity
+            startActivity(intent)
         }
+
+//        // Define o Listener do Button
+//        btnInserir.setOnClickListener {
+//            // Atribui a variavel
+//            val produto = txtProduto.text.toString()
+//
+//            // Verifica se preenchido e Adiciona no Adapter
+//            if (produto.isNotEmpty()) {
+//                produtosAdapter.add(produto)
+//                // Limpa o campo
+//                txtProduto.text.clear()
+//            } else {
+//                txtProduto.error = "Preencha o produto"
+//            }
+//        }
 
         // Define o Listener para a ListView
         listViewProdutos.setOnItemLongClickListener {
