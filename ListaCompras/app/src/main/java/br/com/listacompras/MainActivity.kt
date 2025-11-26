@@ -4,11 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ListView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import java.text.NumberFormat
+import java.util.Locale
 
 
 class MainActivity: AppCompatActivity() {
@@ -19,13 +20,17 @@ class MainActivity: AppCompatActivity() {
 
         // Atribui a variável
         val listViewProdutos = findViewById<ListView>(R.id.list_view_produtos)
-        val btnAdicionar = findViewById<Button>(R.id.btn_adicionar)
-//        val btnInserir = findViewById<Button>(R.id.btn_inserir)
-//        val txtProduto = findViewById<EditText>(R.id.txt_produto)
+        val btnAdicionar     = findViewById<Button>(R.id.btn_adicionar)
+        val txtTotal = findViewById<TextView>(R.id.txt_total)
+
+        // Formata e Atribui o total
+        val f = NumberFormat.getCurrencyInstance(Locale("pt",
+                                                                  "BR"))
+        txtTotal.text = getString(R.string.total,
+            f.format(0))
 
         // Declara o Adapter
-        val produtosAdapter = ArrayAdapter<String>(this,
-                                                   android.R.layout.simple_list_item_1)
+        val produtosAdapter = ProdutoAdapter(this)
 
         // Vincula o Adapter ao ListView
         listViewProdutos.adapter = produtosAdapter
@@ -38,21 +43,6 @@ class MainActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
-//        // Define o Listener do Button
-//        btnInserir.setOnClickListener {
-//            // Atribui a variavel
-//            val produto = txtProduto.text.toString()
-//
-//            // Verifica se preenchido e Adiciona no Adapter
-//            if (produto.isNotEmpty()) {
-//                produtosAdapter.add(produto)
-//                // Limpa o campo
-//                txtProduto.text.clear()
-//            } else {
-//                txtProduto.error = "Preencha o produto"
-//            }
-//        }
-
         // Define o Listener para a ListView
         listViewProdutos.setOnItemLongClickListener {
             adapterView: AdapterView<*>, view: View, position: Int, id: Long ->
@@ -63,5 +53,27 @@ class MainActivity: AppCompatActivity() {
             // Retorno do Click
             true
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        // Cria e Atribui as variaveis
+        val listViewProdutos = findViewById<ListView>(R.id.list_view_produtos)
+        val adapter = listViewProdutos.adapter as ProdutoAdapter
+        val txtTotal = findViewById<TextView>(R.id.txt_total)
+
+        // Limpa a lista e Reinclui
+        adapter.clear()
+        adapter.addAll(produtosGlobal)
+
+        // Calcula o resultado e atribui a formatacao
+        val resultado = produtosGlobal.sumOf { it.valor * it.quantidade }
+        val f = NumberFormat.getCurrencyInstance(Locale("pt",
+                                                                  "BR"))
+
+        // Formata e Atribui o total
+        txtTotal.text = getString(R.string.total,
+                                  f.format(resultado))
     }
 }

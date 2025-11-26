@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ListaCompras</string>
     <string name="adicionar_itens">Adicionar Itens</string>
-    <string name="total">TOTAL: 0,00</string>
+    <string name="total">TOTAL: %s</string>
     <string name="cadastrar_produto">Cadastrar Produto</string>
     <string name="descricao_img">Imagem de uma câmero ou produto para comprar </string>
     <string name="inserir">INSERIR</string>
@@ -9,4 +9,5 @@
     <string name="qtde">Quantidade</string>
     <string name="valor_reais">R$ 0.00</string>
     <string name="item_qtde"> Qtd</string>
+    <string name="error_campo">Preencha o campo de %s</string>
 </resources>
