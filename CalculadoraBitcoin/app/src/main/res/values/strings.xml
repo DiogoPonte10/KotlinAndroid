@@ -2,10 +2,10 @@
     <string name="app_name">CalculadoraBitcoin</string>
     <string name="titulo_app">Calculadora de Bitcoin</string>
     <string name="cotacao_atual">Cotação atual: </string>
-    <string name="valor_cotacao">%s</string>
     <string name="indique_valor">Valor em reais: </string>
     <string name="ex_valor">Ex: 45,00</string>
     <string name="calcular">Calcular</string>
     <string name="qtd_bitcoin">Quantidade de bitcoins: </string>
     <string name="qtd_bitcoin_cotacao">%s</string>
+    <string name="campo_vazio">Indique um valor</string>
 </resources>

@@ -13,6 +13,7 @@
         android:id="@+id/txt_valor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
         android:hint="@string/ex_valor" />
     <Button
         android:id="@+id/btn_calcular"
