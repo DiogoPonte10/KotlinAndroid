@@ -11,8 +11,19 @@
         android:text="@string/cotacao_atual" />
     <TextView
         android:id="@+id/txt_cotacao"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textStyle="bold" />
+        android:layout_weight="1"
+        android:textStyle="bold"
+        android:text="@string/valor_cotacao_zero"/>
+    <ImageView
+        android:id="@+id/img_atualizar"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:contentDescription="@string/atualizar_cotacao"
+        android:focusable="true"
+        android:src="@android:drawable/ic_menu_search"
+        android:clickable="true" />
+
 
 </LinearLayout>
